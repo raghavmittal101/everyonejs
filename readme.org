@@ -1,0 +1,29 @@
+#+AUTHOR: Raghav Mittal, Sriram Arvind Lakshmanakumar
+#+DATE: 23rd September, 2017
+#+TITLE: Solving accessibility challenges for Smart citizens
+
+* Background
+- Majority of User Interfaces are difficult to access for people with disabilities.
+- Applications like screen reader also lack in user friendliness in reading a
+  website.
+
+* Problem
+- Most of the web accessibility projects leave the responsibility of
+  accessibility on the end user which means that they endorse/recommend different web UI
+  structures which an accessibility tool like native screen reader can read
+  efficiently and care less about end user experience.
+- But in an ideal case if a user is blind and he alone is trying to explore the
+  web, he should not require intervention of someone else, everytime he/she visits a new
+  webpage or goes online.
+- User with disabilities should also get an semantic experience as enriching as normal
+  users do.
+
+* Why solving the accessibility challenges is important in smart cities?
+- Smart cities will be more dependent on technology.
+- More technology means more smart devices which means more users interacting with
+  diverse range of UI designs and content.
+- Making sure that every application is accessible to all. Means UI should be disabled friendly too.
+- Ensuring the standard quality of interface experience on end user side in
+  case of disabled user.
+- Standardizing the UX for disabled users.
+  
