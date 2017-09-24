@@ -6,23 +6,35 @@
         <script src="./script.js"></script>
     </head>
     <body>
-        <p id="one" class="speak seq-5" alt="this is a good thing">
-            This is A.
+        <!--If speal-alt is present but alt attribute is not present, speak innerText-->
+        <p class="speak speak-alt seq-1">
+            I am A.
         </p>
-        <p id="two" class="speak seq-1">
-            This is B.
+        <!--speak innerText-->
+        <p class="speak seq-2">
+            I am B.
         </p>
-        <p id="two" class="speak seq-3">
-            This is C.
+        <!--if speak-alt is present, and alt text is present, speak alt text-->
+        <p class="speak seq-3 speak-alt" alt="I am alternate text at C.">
+            I am C.
         </p>
-        <p id="two" class="speak seq-2">
-            This is D.
+        <!--if speak-alt is present but neither alt text nor innerText is present, do nothing-->
+        <p class="speak seq-4 speak-alt">
         </p>
-        <p id="two" class="speak seq-656">
-            This is E.
+
+        <!--one more example-->
+        <p class="speak seq-6">
+            I am D
+        </p>
+        <!--one more example-->
+        <p class="speak seq-5 speak-alt" alt="I am E, called before D">
+            I am E
+        </p>
+        <!--one more example-->
+        <p class="speak seq-7 speak-alt" alt="I am hidden, speaking from alt">
         </p>
         <script>
-            iterateSequence();
+            iterateSpeakSeq("speak");
         </script>
         
 

@@ -15,14 +15,43 @@ function speak(text){
 }
 
 // iterating through the sequence
-var iterateSequence = function(){
+var iterateSpeakSeq = function(className){
     // storing total number of elements which are marked to be spoken
-    var len = document.getElementsByClassName("speak").length;
+    var len = document.getElementsByClassName(className).length;
 
     // iterating through all marked elements according to sequence defined by seq-n class
     for(var i=0; i<len; i++){
         try {
-            mytext = document.getElementsByClassName('seq-'+i)[0].innerText;
+            // get element tagged with seq-i class
+            elem = document.getElementsByClassName('seq-'+i)[0]
+            mytext = elem.innerText;
+
+            // check if its also tagged with speak-alt class
+            try{
+                // if element contains speak-alt class then speak alternate text only.
+                if(elem.classList.contains('speak-alt')){
+                    try{
+                        mytext = elem.getAttribute('alt');
+                        // if mytext is `null` that means alt attribute is not present
+                        if(!mytext){
+                            // try if innerText is still present
+                            try{
+                                elem = document.getElementsByClassName('seq-'+i)[0]
+                                mytext = elem.innerText;
+                            }
+                            // inner text not found, that means don't speak anything at all.
+                            catch(err){
+                                continue;
+                            }
+                        }
+                    }
+                    catch(err){ 
+                       continue; 
+                        
+                     }
+                }
+            }
+            catch(err){ continue; }
             speak(mytext);
         }
         // if there is error that means that sequence count is discontinuous.
