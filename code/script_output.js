@@ -14,6 +14,7 @@ function speak(text){
 
 }
 
+
 // iterating through the sequence
 var iterateSpeakSeq = function(className){
     // storing total number of elements which are marked to be spoken

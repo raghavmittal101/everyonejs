@@ -1,0 +1,72 @@
+#+AUTHOR: Raghav Mittal
+#+TITLE: An Adaptive Web Framework for Users with Disabilities
+#+DATE: 15 September, 2017
+
+* Background
+- While walking through the website [[http://www.bbc.co.uk/accessibility/][BBC]] there was an option for
+  people with disabilities which said "I am blind" means asking the user if
+  he/she is blind.
+- Majority of website are difficult to access for such people.
+- Applications like screen reader also lack in user friendliness in reading a
+  website.
+
+* Problem
+- Most of the web accessibility projects leave the responsibility of
+  accessibility on the end user which means that they endorse/recommend different web UI
+  structures which an accessibility tool like native screen reader can read
+  efficiently and care less about end user experience.
+- But in an ideal case if a user is blind and he alone is trying to explore the
+  web, he should not require intervention of someone else, everytime he/she visits a new
+  webpage or goes online.
+- User with disabilities should also get an semantic experience as enriching as normal
+  users do.
+** TODO
+- There are accessibility guidelines by the W3C to make a website accessible
+  for differently abled.
+- Other ways in which a blind user can access a website.
+
+* Abstractions - Accessibility problem related to webpages
+** Structured I/O guidance for a disabled user on user side is not available.
+*** Presently, Webpage accessibility depends on the user side inbuilt tools.
+     - Page is structured in a way that those tools read it more
+       efficiently. But the user is dependent on these tools which come packed
+       with the OS and require to be called explicitly.
+     - For example, if it's a screen reader, it will only ready the full page
+       from top to bottom instead of just reading the region of interest that
+       also in a structured guided path.
+     - Inbuilt accessibility tools provide one way interaction only. That means they are not smart
+       and interactive.
+
+** Proposed tools
+      - Tools which can interact with user. Can take input as well as provide
+        output all in one  interface.
+      - May not need to be installed on machine, comes packed with the webpage itself.
+      - Requires less interruption from user's side.
+      - Help user in guiding through the webpage.
+** Different type of disabilities and potential solutions:
+      | Type | Disability                                        | required Solution                                            |
+      |------+---------------------------------------------------+--------------------------------------------------------------|
+      | A    | Deafness                                          | Convert all sound outputs to visual outputs                  |
+      | B    | Dumbness                                          | Convert all voice inputs to typable input fields             |
+      | C    | Complete Blindness                                | Voice I/O Assistance while navigating through a website.     |
+      | D    | Color Blindness                                   | Multicolor stylesheets                                       |
+      | E    | Partial Blindness                                 | Variable text size.                                          |
+      | F    | Physical disability - no hand(s)/improper hand(s) | Voice Input Assistance while navigating through the website. |
+      | G    | None                                              | None                                                         |
+* Why solving the accessibility challenges is important in smart cities?
+- Smart cities will be more dependent on technology
+- More technology means more smart devices which means more users interacting with
+  diverse range of UI designs and content.
+- Making sure that every application is accessible to all. Means UI should be disabled friendly too.
+- Ensuring the standard quality of interface experience on end user side in
+  case of disabled user.
+- Standardizing the UX for disabled users.
+* Proposed Solution
+- We propose a framework to embed multi-linguistic abilities in the webpage itself.
+- Like /css mediaqueries/ which allows a webpage style to self-arrange
+  according to the screen size, we propose a framework for making a page
+  self-arrange according to the disability of the user. Different set of
+  instructions or paths can be embedded by the developer in the app itself to
+  ensure the desired UX for disabled users.
+- On the other side, a browser must have an option which let the user set his own
+  accessibility preferences.

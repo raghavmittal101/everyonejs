@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>An Adaptive Web Framework for Users with Disabilities</title>
+<!-- 2017-09-24 Sun 16:12 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Raghav Mittal">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">An Adaptive Web Framework for Users with Disabilities</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Background</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>While walking through the website <a href="http://www.bbc.co.uk/accessibility/">BBC</a> there was an option for
+people with disabilities which said "I am blind" means asking the user if
+he/she is blind.
+</li>
+<li>Majority of website are difficult to access for such people.
+</li>
+<li>Applications like screen reader also lack in user friendliness in reading a
+website.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Problem</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Most of the web accessibility projects leave the responsibility of
+accessibility on the end user which means that they endorse/recommend different web UI
+structures which an accessibility tool like native screen reader can read
+efficiently and care less about end user experience.
+</li>
+<li>But in an ideal case if a user is blind and he alone is trying to explore the
+web, he should not require intervention of someone else, everytime he/she visits a new
+webpage or goes online.
+</li>
+<li>User with disabilities should also get an semantic experience as enriching as normal
+users do.
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> <span class="label label-primary TODO">TODO</span> </h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>There are accessibility guidelines by the W3C to make a website accessible
+for differently abled.
+</li>
+<li>Other ways in which a blind user can access a website.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Abstractions - Accessibility problem related to webpages</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Structured I/O guidance for a disabled user on user side is not available.</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Presently, Webpage accessibility depends on the user side inbuilt tools.</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>Page is structured in a way that those tools read it more
+efficiently. But the user is dependent on these tools which come packed
+with the OS and require to be called explicitly.
+</li>
+<li>For example, if it's a screen reader, it will only ready the full page
+from top to bottom instead of just reading the region of interest that
+also in a structured guided path.
+</li>
+<li>Inbuilt accessibility tools provide one way interaction only. That means they are not smart
+and interactive.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Proposed tools</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Tools which can interact with user. Can take input as well as provide
+output all in one  interface.
+</li>
+<li>May not need to be installed on machine, comes packed with the webpage itself.
+</li>
+<li>Requires less interruption from user's side.
+</li>
+<li>Help user in guiding through the webpage.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Different type of disabilities and potential solutions:</h3>
+<div class="outline-text-3" id="text-3-3">
+<table class="table table-striped table-bordered table-hover table-condensed">
+
+
+<colgroup>
+<col  class="left">
+
+<col  class="left">
+
+<col  class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="text-left">Type</th>
+<th scope="col" class="text-left">Disability</th>
+<th scope="col" class="text-left">required Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-left">A</td>
+<td class="text-left">Deafness</td>
+<td class="text-left">Convert all sound outputs to visual outputs</td>
+</tr>
+
+<tr>
+<td class="text-left">B</td>
+<td class="text-left">Dumbness</td>
+<td class="text-left">Convert all voice inputs to typable input fields</td>
+</tr>
+
+<tr>
+<td class="text-left">C</td>
+<td class="text-left">Complete Blindness</td>
+<td class="text-left">Voice I/O Assistance while navigating through a website.</td>
+</tr>
+
+<tr>
+<td class="text-left">D</td>
+<td class="text-left">Color Blindness</td>
+<td class="text-left">Multicolor stylesheets</td>
+</tr>
+
+<tr>
+<td class="text-left">E</td>
+<td class="text-left">Partial Blindness</td>
+<td class="text-left">Variable text size.</td>
+</tr>
+
+<tr>
+<td class="text-left">F</td>
+<td class="text-left">Physical disability - no hand(s)/improper hand(s)</td>
+<td class="text-left">Voice Input Assistance while navigating through the website.</td>
+</tr>
+
+<tr>
+<td class="text-left">G</td>
+<td class="text-left">None</td>
+<td class="text-left">None</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Why solving the accessibility challenges is important in smart cities?</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Smart cities will be more dependent on technology
+</li>
+<li>More technology means more smart devices which means more users interacting with
+diverse range of UI designs and content.
+</li>
+<li>Making sure that every application is accessible to all. Means UI should be disabled friendly too.
+</li>
+<li>Ensuring the standard quality of interface experience on end user side in
+case of disabled user.
+</li>
+<li>Standardizing the UX for disabled users.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Proposed Solution</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>We propose a framework to embed multi-linguistic abilities in the webpage itself.
+</li>
+<li>Like <i>css mediaqueries</i> which allows a webpage style to self-arrange
+according to the screen size, we propose a framework for making a page
+self-arrange according to the disability of the user. Different set of
+instructions or paths can be embedded by the developer in the app itself to
+ensure the desired UX for disabled users.
+</li>
+<li>On the other side, a browser must have an option which let the user set his own
+accessibility preferences.
+</li>
+</ul>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Background</a></li>
+<li><a href="#sec-2">2. Problem</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. </a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Abstractions - Accessibility problem related to webpages</a>
+<ul class="nav">
+<li><a href="#sec-3-1">3.1. Structured I/O guidance for a disabled user on user side is not available.</a></li>
+<li><a href="#sec-3-2">3.2. Proposed tools</a></li>
+<li><a href="#sec-3-3">3.3. Different type of disabilities and potential solutions:</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Why solving the accessibility challenges is important in smart cities?</a></li>
+<li><a href="#sec-5">5. Proposed Solution</a></li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="date">Date: 15 September, 2017</p>
+<p class="author">Author: Raghav Mittal</p>
+<p class="date">Created: 2017-09-24 Sun 16:12</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org-mode</a> 9.0.8)</p>
+</div>
+</footer>
+</body>
+</html>
