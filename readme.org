@@ -1,6 +1,6 @@
 #+AUTHOR: Raghav Mittal, Sriram Arvind Lakshmanakumar
 #+DATE: 23rd September, 2017
-#+TITLE: Solving accessibility challenges for Smart citizens
+#+TITLE: EveryoneJS  - Solving accessibility challenges for Smart citizens
 
 * Background
 - Majority of User Interfaces are difficult to access for people with disabilities.
