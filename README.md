@@ -3,10 +3,7 @@
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
-
-* It contains code for IIIT Hyderabad Megathon
-* 0.1
-<!---* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)-->
+- EveryoneJS versoin 0.1
 
 ### How do I get set up? ###
 
