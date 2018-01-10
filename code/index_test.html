@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+        "use strict"
+        if (annyang) {
+          // Let's define our first command. First the text we expect, and then the function it should call
+          var commands = {
+            'hi': function() {
+              $('#elem').hide();
+            }
+          };
+    
+            annyang.debug();
+          // Add our commands to annyang
+          annyang.addCommands(commands);
+
+          // Start listening. You can call this here, or attach this call to an event, button, etc.
+          annyang.start();
+        }
+        </script>
+    </head>
+    <body>
+        <div id="elem">
+        Raghav
+        </div>
+    </body>
+</html>
